@@ -1254,58 +1254,100 @@ importFile.addEventListener('change', function(e){
   importFile.value = '';
 });
 
-var presets = {
-  Inferno: {
-    bg:'#0a0a0a', header:'#1a1a1a', text:'#ffffff', muted:'#cccccc',
-    accent:'#ff00aa', accentDark:'#ff00aa', glowColor:'#ff00ff', cardBg:'#000000',
-    cardRadius:12, glowSize:25, glowStrength:0.5, 
-    fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    snowColor:'#ffffff', snowCount:160, snowSize:3, snowSpeed:1.3
-  },
-  kirby: { 
-    bg:'#1A1A2E', header:'#1A1A2E', text:'#FFFFFF', muted:'#F8F1F1',
-    accent:'#FF8EC6', accentDark:'#A50017', glowColor:'#FFC9D1', cardBg:'#2B2B45',
-    cardRadius:10, glowSize:25, glowStrength:0.5, 
-    fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    snowColor:'#e660ce', snowCount:160, snowSize:3, snowSpeed:1.4
-  },
-  mathias: { 
-    bg:'#000000', header:'#000000', text:'#a3a3a3', muted:'#f8f1f1',
-    accent:'#828282', accentDark:'#3d3d3d', glowColor:'#ffffff', cardBg:'#000000',
-    cardRadius:10, glowSize:25, glowStrength:0.5, 
-    fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    snowColor:'#ffffff', snowCount:160, snowSize:3, snowSpeed:1.4
-  },
-  Ocean: {
-    bg:'#021b2c', header:'#023047', text:'#e8f6ff', muted:'#a7d3f0',
-    accent:'#00a3ff', accentDark:'#006bb3', glowColor:'#00baff', cardBg:'#00121a',
-    cardRadius:12, glowSize:18, glowStrength:0.28, 
-    fontFamily:"'Roboto', Arial, sans-serif",
-    snowColor:'#c8f0ff', snowCount:120, snowSize:3, snowSpeed:0.9
-  },
-  Neon: {
-    bg:'#04040a', header:'#0b0b12', text:'#e7ffe7', muted:'#9ef3d1',
-    accent:'#00ffb3', accentDark:'#00d18a', glowColor:'#00ffb3', cardBg:'#05050b',
-    cardRadius:8, glowSize:30, glowStrength:0.5, 
-    fontFamily:"'VT323', monospace",
-    snowColor:'#99ffdd', snowCount:200, snowSize:2, snowSpeed:1.6
-  },
-  Retro: {
-    bg:'#0b0011', header:'#1a0337', text:'#ffe8d6', muted:'#ffd6a5',
-    accent:'#ff66c4', accentDark:'#cc3aa0', glowColor:'#ff66c4', cardBg:'#140018',
-    cardRadius:14, glowSize:12, glowStrength:0.2, 
-    fontFamily:"'Press Start 2P', cursive",
-    snowColor:'#ffd6f0', snowCount:100, snowSize:4, snowSpeed:0.7
-  },
-  Dark: DEFAULTS,
-  Light: {
-    bg:'#f4f4f6', header:'#ffffff', text:'#111111', muted:'#666666',
-    accent:'#0066ff', accentDark:'#0047b3', glowColor:'#66a3ff', cardBg:'#ffffff',
-    cardRadius:8, glowSize:10, glowStrength:0.12, 
-    fontFamily:"Arial, Helvetica, sans-serif",
-    snowColor:'#444444', snowCount:60, snowSize:2, snowSpeed:0.8
-  }
-};
+      var PRESETS = {
+        Inferno: {
+          bg:"#0a0a0a", header:"#1a1a1a", text:"#ffffff", muted:"#cccccc",
+          accent:"#ff00aa", accentDark:"#ff00aa", glowColor:"#ff00ff",
+          cardBg:"#000000", cardRadius:12, glowSize:25, glowStrength:0.5,
+          fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+          snowColor:"#ffffff", snowCount:160, snowSize:3, snowSpeed:1.3
+        },
+        mathias: {
+          bg:"#000000", header:"#000000", text:"#ffffff", muted:"#f8f1f1",
+          accent:"#828282", accentDark:"#3d3d3d", glowColor:"#ffffff",
+          cardBg:"#000000", cardRadius:10, glowSize:25, glowStrength:0.5,
+          fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+          snowColor:"#ffffff", snowCount:160, snowSize:3, snowSpeed:1.4
+        },
+        kirby: {
+          bg:"#1A1A2E", header:"#1A1A2E", text:"#FFFFFF", muted:"#F8F1F1",
+          accent:"#FF8EC6", accentDark:"#A50017", glowColor:"#FFC9D1",
+          cardBg:"#2B2B45", cardRadius:10, glowSize:25, glowStrength:0.5,
+          fontFamily:"'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+          snowColor:"#e660ce", snowCount:160, snowSize:3, snowSpeed:1.4
+        },
+        Ocean: {
+          bg:"#021b2c", header:"#023047", text:"#e8f6ff", muted:"#a7d3f0",
+          accent:"#00a3ff", accentDark:"#006bb3", glowColor:"#00baff",
+          cardBg:"#00121a", cardRadius:12, glowSize:18, glowStrength:0.28,
+          fontFamily:"'Roboto', Arial, sans-serif",
+          snowColor:"#c8f0ff", snowCount:120, snowSize:3, snowSpeed:0.9
+        },
+        Neon: {
+          bg:"#04040a", header:"#0b0b12", text:"#e7ffe7", muted:"#9ef3d1",
+          accent:"#00ffb3", accentDark:"#00d18a", glowColor:"#00ffb3",
+          cardBg:"#05050b", cardRadius:8, glowSize:30, glowStrength:0.5,
+          fontFamily:"'VT323', monospace",
+          snowColor:"#99ffdd", snowCount:200, snowSize:2, snowSpeed:1.6
+        },
+        Retro: {
+          bg:"#0b0011", header:"#1a0337", text:"#ffe8d6", muted:"#ffd6a5",
+          accent:"#ff66c4", accentDark:"#cc3aa0", glowColor:"#ff66c4",
+          cardBg:"#140018", cardRadius:14, glowSize:12, glowStrength:0.2,
+          fontFamily:"'Press Start 2P', cursive",
+          snowColor:"#ffd6f0", snowCount:100, snowSize:4, snowSpeed:0.7
+        },
+        Orange: {
+          bg: "#0b0b0b", header: "#111111", text: "#ffffff", muted: "#cccccc",
+          accent: "#ff6600", accentDark: "#ff3300", glowColor: "#ff6600", cardBg: "#000000",
+          cardRadius: 10, glowSize: 15, glowStrength: 0.25,
+          fontFamily: "Arial, Helvetica, sans-serif",
+          snowColor: "#ffffff", snowCount: 150, snowSize: 3, snowSpeed: 1.2
+        },
+        Metallic:{
+          bg: "#0f1113", header: "#161a1d", text: "#e6f1f2", muted: "#8b949e",
+          accent: "#00b3b3", accentDark: "#008c8c", glowColor: "#00b3b3", cardBg: "#1b1f23",
+          cardRadius: 10, glowSize: 15, glowStrength: 0.25,
+          fontFamily: "Arial, Helvetica, sans-serif",
+          snowColor: "#00b3b3", snowCount: 150, snowSize: 3, snowSpeed: 1.2
+        },
+        Lunaar: {
+          bg: "#14001f", header: "#1c002b", text: "#f2e6ff", muted: "#b388ff",
+          accent: "#9c27b0", accentDark: "#6a1b9a", glowColor: "#ba68c8", cardBg: "#240036",
+          cardRadius: 10, glowSize: 20, glowStrength: 0.35,
+          fontFamily: "Arial, Helvetica, sans-serif",
+          snowColor: "#ba68c8", snowCount: 150, snowSize: 3, snowSpeed: 1.2
+        },
+        Bloodmoon: {
+          bg: "#120000", header: "#1a0000", text: "#ffe6e6", muted: "#ff9999",
+          accent: "#ff1a1a", accentDark: "#b30000", glowColor: "#ff3333", cardBg: "#220000",
+          cardRadius: 10, glowSize: 7, glowStrength: 1,
+          fontFamily: "Arial, Helvetica, sans-serif",
+          snowColor: "#ff1a1a", snowCount: 150, snowSize: 3, snowSpeed: 1.2
+         },
+         Acidic : {
+          bg: "#050805", header: "#0b120b", text: "#ccffcc", muted: "#66aa66",
+          accent: "#00ff66", accentDark: "#00cc44", glowColor: "#00ff88", cardBg: "#0f1a0f",
+          cardRadius: 10, glowSize: 18, glowStrength: 0.4,
+          fontFamily: "Arial, Helvetica, sans-serif",
+          snowColor: "#00ff66", snowCount: 150, snowSize: 3, snowSpeed: 1.2
+         },
+         Cat : {
+         bg: "#0c0414", header: "#150824", text: "#f5e9ff", muted: "#d946ef",
+          accent: "#a855f7", accentDark: "#e11d48", glowColor: "#c026d3", cardBg: "#1a0f2b",
+          cardRadius: 18, glowSize: 28, glowStrength: 0.5,
+          fontFamily: "Arial, Helvetica, sans-serif",
+         snowColor: "#ff1e56", snowCount: 170, snowSize: 3, snowSpeed: 1.3
+         },
+
+        Light: {
+          bg:"#f4f4f6", header:"#ffffff", text:"#111111", muted:"#666666",
+          accent:"#0066ff", accentDark:"#0047b3", glowColor:"#66a3ff",
+          cardBg:"#ffffff", cardRadius:8, glowSize:10, glowStrength:0.12,
+          fontFamily:"Arial, Helvetica, sans-serif",
+          snowColor:"#444444", snowCount:60, snowSize:2, snowSpeed:0.8
+        }
+      };
 
 var presetBtns = document.querySelectorAll('[data-preset]');
 for(var i=0; i<presetBtns.length; i++){
